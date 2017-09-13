@@ -3,11 +3,10 @@ from django.http import HttpResponse
 from article.models import Article
 
 def home(request):
-	return HttpResponse('Hello World')
+	post_list = Article.objects.all()
+	return render(request, 'home.html', {'post_list': post_list})
 
 
-def detail(request, bid):
-	blog = Article.objects.all()[int(bid)]
-	str = "title = %s, category = %s, datetime = %s, content = %s" % (
-		blog.title, blog.category, blog.date_time, blog.content)
-	return HttpResponse(str)
+def detail(request, post_id):
+	post = Article.objects.get(id=int(post_id))
+	return render(request, 'post.html', {'post': post})

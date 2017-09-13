@@ -19,5 +19,5 @@ from article import views as article_views
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', article_views.home, name = 'home'),
-    url(r'^(?P<bid>\d+)/$', article_views.detail, name = 'detail'),
+    url(r'^(?P<post_id>\d+)/$', article_views.detail, name = 'detail'),
 ]
